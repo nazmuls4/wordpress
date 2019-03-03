@@ -1,0 +1,46 @@
+
+//custom post
+add_action( 'init', 'my_theme_custom_post' );
+function my_theme_custom_post() {
+    register_post_type( 'testimonial',
+        array(
+            'labels' => array(
+                'name' => __( 'testimonial' ),
+                'singular_name' => __( 'testimonial' )
+            ),
+            'supports' => array('title', 'editor', 'custom-fields', 'thumbnail', 'page-attributes'),
+            'public' => true
+        )
+    );
+}
+
+
+//shortcode alert
+function post_list_shortcode($atts){
+    extract( shortcode_atts( array(
+        'count' => '-1',
+        'type' => 'post',
+    ), $atts) );
+     
+    $q = new WP_Query(
+        array('posts_per_page' => $count,
+		'post_type' => $type
+		)
+        );      
+         
+    $list = '<ul>';
+    while($q->have_posts()) : $q->the_post();
+        $idd = get_the_ID();        
+        $post_content = get_the_content();
+        $list .= '
+        <li><a href="'.get_permalink().'">'.get_the_title().'</a></li>
+        ';        
+    endwhile;
+    $list .= '</ul>';
+    wp_reset_query();
+    return $list;
+}
+add_shortcode('post_list_item', 'post_list_shortcode');  
+
+
+
