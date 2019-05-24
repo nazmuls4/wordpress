@@ -1,0 +1,27 @@
+
+.contact-form-content ::-webkit-input-placeholder { /* Chrome */
+  color: #fff; 
+}
+.contact-form-content .contact-form-content :focus::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+.contact-form-content :-ms-input-placeholder { /* IE 10+ */
+  color: #fff; 
+}
+.contact-form-content :focus:-ms-input-placeholder {
+  opacity: 0.5;
+}
+.contact-form-content ::-moz-placeholder { /* Firefox 19+ */
+  color: #fff;
+  opacity: 1;  
+}
+.contact-form-content :focus::-moz-placeholder {
+  opacity: 0.5;
+}
+.contact-form-content :-moz-placeholder { /* Firefox 4 - 18 */
+  color: #fff;
+  opacity: 1; 
+}
+.contact-form-content :focus:-moz-placeholder {
+  opacity: 0.5;
+}
